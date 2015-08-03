@@ -90,7 +90,11 @@
   <h1>Your Car Dealership</h1>
   <ul>
     <?php
-      foreach ($cars_matching_search as $car) {
+    if ($cars_matching_search == array()) {
+      echo "<h1>Find another car dealer</h1>";
+    }
+
+    foreach ($cars_matching_search as $car) {
         $car_image = $car->getImage();
         $car_price = $car->getPrice();
         $car_model = $car->getModel();
@@ -101,11 +105,8 @@
               echo "<li> $$car->cost </li>";
               echo "<li> Miles: $car->mileage </li>";
         echo "</ul>";
+      }
 
-        if (empty($cars_matching_search)) {
-          echo "<h1>'Find Another Car Dealer!'</h1>";
-        }
-        }
     ?>
   </ul>
 </body>
