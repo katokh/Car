@@ -73,10 +73,11 @@
 
     $cars_matching_search = array();
     foreach ($cars as $car) {
-      if ($car->cost < $_GET["price"]) {
+      if ($car->cost < $_GET["price"] && $car->mileage < $_GET["miles"]) {
         array_push($cars_matching_search, $car);
       }
     }
+
 
 ?>
 
@@ -100,6 +101,10 @@
               echo "<li> $$car->cost </li>";
               echo "<li> Miles: $car->mileage </li>";
         echo "</ul>";
+
+        if (empty($cars_matching_search)) {
+          echo "<h1>'Find Another Car Dealer!'</h1>";
+        }
         }
     ?>
   </ul>
